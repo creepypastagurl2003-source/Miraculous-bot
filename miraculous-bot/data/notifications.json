@@ -1,0 +1,22 @@
+{
+  "youtube": [
+    {
+      "guild_id": "1486071744921075844",
+      "discord_channel_id": "1486170999627055145",
+      "youtube_channel_id": "UCLquvKarmF-HE03D3slwHCw",
+      "youtube_channel_name": "\ud835\udc12\ud835\udc21\ud835\udc1a\ud835\udc1d\ud835\udc28\ud835\udc30 \ud835\udc11\ud835\udc1a\ud835\udc2f\ud835\udc1e\ud835\udc27",
+      "message_format": "\ud83d\udea8 NEW VIDEO ALERT \ud83d\udea8\n\n\ud83d\udda4 {channel} just dropped a new video \ud83d\udc40\ud83d\udd25\n\n\ud83c\udfa5 WATCH NOW: {url}  \n\ud83d\udc97 LIKE + COMMENT  \n\ud83d\udda4 DON\u2019T MISS THIS  \n\nGO GO GO \ud83d\ude2d\ud83d\udd25",
+      "last_video_id": "foqzYuWrrsw"
+    }
+  ],
+  "twitch": [
+    {
+      "guild_id": "1486071744921075844",
+      "discord_channel_id": "1488605591931981885",
+      "twitch_username": "pixieangxl",
+      "twitch_display_name": "PixieAngxl",
+      "message_format": "\ud83c\udf19 {channel} is now live\u2026 \u2728\n\n\ud83c\udfae Step into the stream  \n\ud83d\udc97 Relax and enjoy the vibe  \n\n\ud83d\udd34 Watch here: {url}",
+      "is_live": false
+    }
+  ]
+}
