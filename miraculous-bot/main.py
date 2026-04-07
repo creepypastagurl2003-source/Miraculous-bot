@@ -2,7 +2,10 @@ import discord
 from discord.ext import commands
 import os
 import logging
+from dotenv import load_dotenv
 from keep_alive import keep_alive
+
+load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
