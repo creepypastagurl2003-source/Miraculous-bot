@@ -13,9 +13,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger("bot")
 
-TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
+TOKEN = os.environ.get("MIRACULOUS_BOT_TOKEN")
 if not TOKEN:
-    raise RuntimeError("DISCORD_BOT_TOKEN environment variable is not set.")
+    raise RuntimeError("MIRACULOUS_BOT_TOKEN environment variable is not set.")
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -28,12 +28,6 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 
 def _local_signature() -> dict:
-    """
-    Build a map of {command_name: sorted list of subcommand names} for
-    every top-level command the bot currently has loaded.
-    This lets us detect both new top-level commands AND new subcommands
-    inside existing groups without syncing on every restart.
-    """
     sig = {}
     for cmd in bot.tree.get_commands():
         if hasattr(cmd, "commands"):
@@ -44,11 +38,6 @@ def _local_signature() -> dict:
 
 
 async def smart_sync():
-    """
-    Only sync commands to Discord when the local command tree (including
-    subcommands) differs from what is registered.  This avoids burning
-    through the 200-command-create-per-day quota on every restart.
-    """
     local_sig = _local_signature()
     local_names = set(local_sig.keys())
 
@@ -57,15 +46,13 @@ async def smart_sync():
             registered = await bot.tree.fetch_commands(guild=guild)
             registered_sig = {}
             for cmd in registered:
-                # AppCommand objects expose .options for subcommands
                 subs = [
                     o.name for o in getattr(cmd, "options", [])
-                    if hasattr(o, "options")  # subcommand groups / commands
+                    if hasattr(o, "options")
                 ]
                 registered_sig[cmd.name] = sorted(subs)
 
             registered_names = set(registered_sig.keys())
-
             added = local_names - registered_names
             removed = registered_names - local_names
             changed = {
@@ -93,11 +80,7 @@ async def smart_sync():
 
         except discord.HTTPException as e:
             if e.code == 30034:
-                logger.warning(
-                    "Daily command-create limit (200) reached. "
-                    "Commands that were already registered will still work. "
-                    "Newly added commands will become available after midnight UTC."
-                )
+                logger.warning("Daily command-create limit (200) reached.")
             elif e.code == 50240:
                 logger.warning(f"Entry Point restriction in '{guild.name}' — skipping.")
             else:
@@ -115,7 +98,6 @@ async def on_ready():
 @bot.command(name="sync", hidden=True)
 @commands.is_owner()
 async def force_sync(ctx):
-    """Owner-only: force a full command sync regardless of diff."""
     await ctx.send("⏳ Force-syncing commands...")
     total = 0
     for guild in bot.guilds:
@@ -125,10 +107,7 @@ async def force_sync(ctx):
             total += len(synced)
         except discord.HTTPException as e:
             if e.code == 30034:
-                await ctx.send(
-                    "⚠️ Hit Discord's daily command-create limit (200/day). "
-                    "Try again after midnight UTC."
-                )
+                await ctx.send("⚠️ Hit Discord's daily command-create limit (200/day).")
                 return
             await ctx.send(f"❌ Sync error: {e}")
             return
@@ -148,7 +127,6 @@ async def load_cogs():
         "cogs.reaction_roles",
         "cogs.ai_chat",
         "cogs.economy",
-        "cogs.notifications",
         "cogs.collection",
         "cogs.profile",
         "cogs.fun",
