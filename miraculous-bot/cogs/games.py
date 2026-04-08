@@ -41,106 +41,26 @@ SLOT_PAYOUTS = {
 }
 
 TRIVIA_QUESTIONS = [
-    {
-        "q": "What is the capital of France?",
-        "choices": ["Berlin", "Paris", "Rome", "Madrid"],
-        "answer": 1,
-    },
-    {
-        "q": "How many sides does a hexagon have?",
-        "choices": ["5", "6", "7", "8"],
-        "answer": 1,
-    },
-    {
-        "q": "Which planet is known as the Red Planet?",
-        "choices": ["Venus", "Jupiter", "Mars", "Saturn"],
-        "answer": 2,
-    },
-    {
-        "q": "What is the chemical symbol for gold?",
-        "choices": ["Ag", "Fe", "Au", "Cu"],
-        "answer": 2,
-    },
-    {
-        "q": "Who painted the Mona Lisa?",
-        "choices": ["Michelangelo", "Leonardo da Vinci", "Raphael", "Caravaggio"],
-        "answer": 1,
-    },
-    {
-        "q": "What is the largest ocean on Earth?",
-        "choices": ["Atlantic", "Indian", "Arctic", "Pacific"],
-        "answer": 3,
-    },
-    {
-        "q": "How many bones are in the human body?",
-        "choices": ["196", "206", "216", "226"],
-        "answer": 1,
-    },
-    {
-        "q": "What language has the most native speakers?",
-        "choices": ["English", "Spanish", "Mandarin Chinese", "Hindi"],
-        "answer": 2,
-    },
-    {
-        "q": "What year did the Titanic sink?",
-        "choices": ["1910", "1912", "1914", "1916"],
-        "answer": 1,
-    },
-    {
-        "q": "Which element has the atomic number 1?",
-        "choices": ["Helium", "Oxygen", "Carbon", "Hydrogen"],
-        "answer": 3,
-    },
-    {
-        "q": "What is the fastest land animal?",
-        "choices": ["Lion", "Cheetah", "Greyhound", "Pronghorn"],
-        "answer": 1,
-    },
-    {
-        "q": "How many strings does a standard guitar have?",
-        "choices": ["4", "5", "6", "7"],
-        "answer": 2,
-    },
-    {
-        "q": "What is the square root of 144?",
-        "choices": ["11", "12", "13", "14"],
-        "answer": 1,
-    },
-    {
-        "q": "Which country invented pizza?",
-        "choices": ["France", "Greece", "Italy", "Spain"],
-        "answer": 2,
-    },
-    {
-        "q": "What is the longest river in the world?",
-        "choices": ["Amazon", "Yangtze", "Mississippi", "Nile"],
-        "answer": 3,
-    },
-    {
-        "q": "Which Disney movie features the song 'Let It Go'?",
-        "choices": ["Tangled", "Brave", "Moana", "Frozen"],
-        "answer": 3,
-    },
-    {
-        "q": "How many planets are in our solar system?",
-        "choices": ["7", "8", "9", "10"],
-        "answer": 1,
-    },
-    {
-        "q": "What sport is played at Wimbledon?",
-        "choices": ["Cricket", "Golf", "Tennis", "Badminton"],
-        "answer": 2,
-    },
-    {
-        "q": "What is the hardest natural substance on Earth?",
-        "choices": ["Platinum", "Quartz", "Diamond", "Corundum"],
-        "answer": 2,
-    },
-    {
-        "q": "Which animal is the symbol of the World Wildlife Fund?",
-        "choices": ["Polar Bear", "Giant Panda", "Snow Leopard", "Tiger"],
-        "answer": 1,
-    },
+    {"q": "What is the capital of France?", "choices": ["Berlin", "Paris", "Rome", "Madrid"], "answer": 1},
+    {"q": "How many sides does a hexagon have?", "choices": ["5", "6", "7", "8"], "answer": 1},
+    {"q": "Which planet is known as the Red Planet?", "choices": ["Venus", "Jupiter", "Mars", "Saturn"], "answer": 2},
+    {"q": "What is the chemical symbol for gold?", "choices": ["Ag", "Fe", "Au", "Cu"], "answer": 2},
+    {"q": "Who painted the Mona Lisa?", "choices": ["Michelangelo", "Leonardo da Vinci", "Raphael", "Caravaggio"], "answer": 1},
+    {"q": "What is the largest ocean on Earth?", "choices": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 3},
+    {"q": "How many bones are in the human body?", "choices": ["196", "206", "216", "226"], "answer": 1},
+    {"q": "What language has the most native speakers?", "choices": ["English", "Spanish", "Mandarin Chinese", "Hindi"], "answer": 2},
+    {"q": "What year did the Titanic sink?", "choices": ["1910", "1912", "1914", "1916"], "answer": 1},
+    {"q": "Which element has the atomic number 1?", "choices": ["Helium", "Oxygen", "Carbon", "Hydrogen"], "answer": 3},
+    {"q": "What is the fastest land animal?", "choices": ["Lion", "Cheetah", "Greyhound", "Pronghorn"], "answer": 1},
+    {"q": "How many strings does a standard guitar have?", "choices": ["4", "5", "6", "7"], "answer": 2},
+    {"q": "What is the square root of 144?", "choices": ["11", "12", "13", "14"], "answer": 1},
+    {"q": "Which country invented pizza?", "choices": ["France", "Greece", "Italy", "Spain"], "answer": 2},
+    {"q": "What is the longest river in the world?", "choices": ["Amazon", "Yangtze", "Mississippi", "Nile"], "answer": 3},
+    {"q": "Which Disney movie features the song 'Let It Go'?", "choices": ["Tangled", "Brave", "Moana", "Frozen"], "answer": 3},
+    {"q": "How many planets are in our solar system?", "choices": ["7", "8", "9", "10"], "answer": 1},
+    {"q": "What sport is played at Wimbledon?", "choices": ["Cricket", "Golf", "Tennis", "Badminton"], "answer": 2},
+    {"q": "What is the hardest natural substance on Earth?", "choices": ["Platinum", "Quartz", "Diamond", "Corundum"], "answer": 2},
+    {"q": "Which animal is the symbol of the World Wildlife Fund?", "choices": ["Polar Bear", "Giant Panda", "Snow Leopard", "Tiger"], "answer": 1},
 ]
 
 TRUTH_QUESTIONS = [
@@ -225,29 +145,35 @@ class RPSView(discord.ui.View):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id == self.challenger.id:
                 if self.challenger_choice:
-                    await interaction.followup.send("You already chose!", ephemeral=True)
+                    await interaction.response.send_message("You already chose!", ephemeral=True)
                     return
                 self.challenger_choice = choice
             elif self.opponent and interaction.user.id == self.opponent.id:
                 if self.opponent_choice:
-                    await interaction.followup.send("You already chose!", ephemeral=True)
+                    await interaction.response.send_message("You already chose!", ephemeral=True)
                     return
                 self.opponent_choice = choice
             else:
-                await interaction.followup.send("This game is not for you!", ephemeral=True)
+                await interaction.response.send_message("This game is not for you!", ephemeral=True)
                 return
-
-            await interaction.followup.send(f"You chose **{self.EMOJI[choice]} {choice.capitalize()}**!", ephemeral=True)
 
             if self.bot_play:
                 self.opponent_choice = self.bot_play
 
             if self.challenger_choice and self.opponent_choice:
-                await self.finish(interaction)
+                await self.finish(interaction, choice)
+            else:
+                await interaction.response.send_message(
+                    f"You chose **{self.EMOJI[choice]} {choice.capitalize()}**! Waiting for your opponent...",
+                    ephemeral=True,
+                )
         return callback
 
-    async def finish(self, interaction: discord.Interaction):
-        await interaction.response.defer()
+    async def finish(self, interaction: discord.Interaction, last_choice: str):
+        await interaction.response.send_message(
+            f"You chose **{self.EMOJI[last_choice]} {last_choice.capitalize()}**! Revealing results...",
+            ephemeral=True,
+        )
         self.stop()
         for item in self.children:
             item.disabled = True
@@ -308,7 +234,7 @@ class TriviaView(discord.ui.View):
     def make_callback(self, idx: int):
         async def callback(interaction: discord.Interaction):
             if interaction.user.id in self.answered:
-                await interaction.followup.send("You already answered!", ephemeral=True)
+                await interaction.response.send_message("You already answered!", ephemeral=True)
                 return
             self.answered.add(interaction.user.id)
             correct_idx = self.question["answer"]
@@ -319,7 +245,7 @@ class TriviaView(discord.ui.View):
             else:
                 chosen = self.question["choices"][idx]
                 msg = f"❌ Wrong! You chose **{labels[idx]}: {chosen}**. The correct answer was **{labels[correct_idx]}: {correct_text}**."
-            await interaction.followup.send(msg, ephemeral=True)
+            await interaction.response.send_message(msg, ephemeral=True)
         return callback
 
     async def on_timeout(self):
@@ -362,7 +288,6 @@ class WYRView(discord.ui.View):
         await self.update_message(interaction)
 
     async def update_message(self, interaction: discord.Interaction):
-        await interaction.response.defer()
         total = len(self.votes_a) + len(self.votes_b)
         a_pct = round(len(self.votes_a) / total * 100) if total else 0
         b_pct = 100 - a_pct if total else 0
@@ -448,9 +373,8 @@ class GamesCog(commands.Cog):
     async def coinflip(self, interaction: discord.Interaction):
         await interaction.response.defer()
         result = random.choice(["Heads", "Tails"])
-        emoji = "🪙"
         embed = discord.Embed(
-            title=f"{emoji} Coin Flip!",
+            title="🪙 Coin Flip!",
             description=f"The coin landed on... **{result}!**",
             color=discord.Color.gold(),
         )
@@ -464,39 +388,28 @@ class GamesCog(commands.Cog):
         dice = dice.strip().lower()
         match = re.fullmatch(r"(\d+)d(\d+)", dice)
         if not match:
-            await interaction.followup.send(
-                "❌ Invalid dice format. Use something like `2d6`, `1d20`, `3d8`.", ephemeral=True
-            )
+            await interaction.followup.send("❌ Invalid dice format. Use something like `2d6`, `1d20`, `3d8`.", ephemeral=True)
             return
-
         count = int(match.group(1))
         sides = int(match.group(2))
-
         if count < 1 or count > 20:
             await interaction.followup.send("❌ You can roll between 1 and 20 dice.", ephemeral=True)
             return
         if sides < 2 or sides > 1000:
             await interaction.followup.send("❌ Dice must have between 2 and 1000 sides.", ephemeral=True)
             return
-
         rolls = [random.randint(1, sides) for _ in range(count)]
         total = sum(rolls)
-
-        embed = discord.Embed(
-            title=f"🎲 Rolling {dice.upper()}",
-            color=discord.Color.orange(),
-        )
+        embed = discord.Embed(title=f"🎲 Rolling {dice.upper()}", color=discord.Color.orange())
         if count == 1:
             embed.description = f"You rolled a **{total}**!"
         else:
             rolls_str = " + ".join(str(r) for r in rolls)
             embed.description = f"**Rolls:** {rolls_str}\n**Total:** {total}"
-
         if count > 1:
             embed.add_field(name="Min", value=str(min(rolls)), inline=True)
             embed.add_field(name="Max", value=str(max(rolls)), inline=True)
             embed.add_field(name="Average", value=f"{total / count:.1f}", inline=True)
-
         embed.set_footer(text=f"Rolled by {interaction.user.display_name}")
         await interaction.followup.send(embed=embed)
 
@@ -505,17 +418,13 @@ class GamesCog(commands.Cog):
         await interaction.response.defer()
         reels = [random.choice(SLOT_SYMBOLS) for _ in range(3)]
         result_tuple = tuple(reels)
-
         payout_key = None
         for key in SLOT_PAYOUTS:
             if result_tuple == key:
                 payout_key = key
                 break
-
         two_match = reels[0] == reels[1] or reels[1] == reels[2] or reels[0] == reels[2]
-
         display = f"[ {reels[0]} | {reels[1]} | {reels[2]} ]"
-
         if payout_key:
             label, color = SLOT_PAYOUTS[payout_key]
             result_text = f"🎉 **{label}**"
@@ -525,7 +434,6 @@ class GamesCog(commands.Cog):
         else:
             result_text = "😔 **No match. Better luck next time!**"
             color = 0x95A5A6
-
         embed = discord.Embed(
             title="🎰 Slot Machine",
             description=f"# {display}\n\n{result_text}",
@@ -544,29 +452,16 @@ class GamesCog(commands.Cog):
         if opponent and opponent.bot:
             await interaction.followup.send("❌ You can't challenge another bot!", ephemeral=True)
             return
-
         bot_play = None
         if not opponent:
             bot_play = random.choice(["rock", "paper", "scissors"])
-
         opp_name = opponent.display_name if opponent else "Bot"
         desc = (
-            f"**{interaction.user.display_name}** vs **{opp_name}**\n\n"
-            f"Pick your move!"
+            f"**{interaction.user.display_name}** vs **{opp_name}**\n\nPick your move!"
             + (f"\n\n{opponent.mention}, it's your turn too!" if opponent else "")
         )
-
-        embed = discord.Embed(
-            title="🪨📄✂️ Rock Paper Scissors",
-            description=desc,
-            color=discord.Color.blurple(),
-        )
-
-        view = RPSView(
-            challenger=interaction.user,
-            opponent=opponent,
-            bot_play=bot_play,
-        )
+        embed = discord.Embed(title="🪨📄✂️ Rock Paper Scissors", description=desc, color=discord.Color.blurple())
+        view = RPSView(challenger=interaction.user, opponent=opponent, bot_play=bot_play)
         await interaction.followup.send(embed=embed, view=view)
 
     @app_commands.command(name="trivia", description="Answer a random trivia question!")
@@ -574,16 +469,10 @@ class GamesCog(commands.Cog):
         await interaction.response.defer()
         q = random.choice(TRIVIA_QUESTIONS)
         labels = ["A", "B", "C", "D"]
-
-        embed = discord.Embed(
-            title="🧠 Trivia Time!",
-            description=f"**{q['q']}**",
-            color=discord.Color.purple(),
-        )
+        embed = discord.Embed(title="🧠 Trivia Time!", description=f"**{q['q']}**", color=discord.Color.purple())
         for i, (label, choice) in enumerate(zip(labels, q["choices"])):
             embed.add_field(name=f"{label}", value=choice, inline=True)
         embed.set_footer(text="You have 30 seconds to answer!")
-
         view = TriviaView(q, interaction.user)
         await interaction.followup.send(embed=embed, view=view)
 
@@ -591,7 +480,6 @@ class GamesCog(commands.Cog):
     async def wyr(self, interaction: discord.Interaction):
         await interaction.response.defer()
         option_a, option_b = random.choice(WYR_QUESTIONS)
-
         embed = discord.Embed(
             title="🤔 Would You Rather...",
             description=(
@@ -601,7 +489,6 @@ class GamesCog(commands.Cog):
             color=discord.Color.blurple(),
         )
         embed.set_footer(text="0 vote(s) total • Click again to unvote")
-
         view = WYRView(option_a, option_b)
         await interaction.followup.send(embed=embed, view=view)
 
@@ -633,22 +520,13 @@ class GamesCog(commands.Cog):
         await interaction.response.defer()
         choices = [o.strip() for o in options.split(",") if o.strip()]
         if len(choices) < 2:
-            await interaction.followup.send(
-                "❌ Please give at least 2 options separated by commas.", ephemeral=True
-            )
+            await interaction.followup.send("❌ Please give at least 2 options separated by commas.", ephemeral=True)
             return
         if len(choices) > 20:
-            await interaction.followup.send(
-                "❌ Maximum 20 options allowed.", ephemeral=True
-            )
+            await interaction.followup.send("❌ Maximum 20 options allowed.", ephemeral=True)
             return
-
         pick = random.choice(choices)
-        embed = discord.Embed(
-            title="🎯 The Bot Chooses...",
-            description=f"**{pick}**",
-            color=discord.Color.teal(),
-        )
+        embed = discord.Embed(title="🎯 The Bot Chooses...", description=f"**{pick}**", color=discord.Color.teal())
         embed.add_field(name="Options", value=" • ".join(choices), inline=False)
         embed.set_footer(text=f"Chosen from {len(choices)} options")
         await interaction.followup.send(embed=embed)
@@ -660,7 +538,6 @@ class GamesCog(commands.Cog):
         seed = sum(ord(c) for c in thing.lower()) + interaction.user.id
         rating = seed % 11
         bar_filled = "█" * rating + "░" * (10 - rating)
-
         if rating <= 3:
             emoji, comment = "💀", "Absolutely terrible."
         elif rating <= 5:
@@ -671,7 +548,6 @@ class GamesCog(commands.Cog):
             emoji, comment = "🔥", "Really good!"
         else:
             emoji, comment = "💯", "Absolutely perfect!"
-
         embed = discord.Embed(
             title=f"{emoji} Rating: {thing}",
             description=f"`[{bar_filled}]` **{rating}/10**\n\n*{comment}*",
@@ -686,14 +562,11 @@ class GamesCog(commands.Cog):
         await interaction.response.defer()
         hugger = interaction.user.mention
         hugged = user.mention
-
         message = random.choice(HUG_MESSAGES).format(hugger=hugger, hugged=hugged)
         gif = random.choice(HUG_GIFS)
-
         embed = discord.Embed(description=message, color=0xFF9EC4)
         embed.set_image(url=gif)
         embed.set_footer(text="🤗 spread the love!")
-
         await interaction.followup.send(embed=embed)
 
 
