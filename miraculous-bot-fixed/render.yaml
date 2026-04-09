@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: miraculous-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    plan: free
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
